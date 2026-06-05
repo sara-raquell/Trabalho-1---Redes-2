@@ -1,0 +1,30 @@
+version: '3'
+services:
+  servidor:
+    build: .
+    container_name: servidor
+    command: sleep infinity
+    cap_add:
+      - NET_ADMIN
+    networks:
+      redeTeste:
+        ipv4_address: 10.0.0.2
+
+  cliente:
+    build: .
+    container_name: cliente
+    command: sleep infinity
+    cap_add:
+      - NET_ADMIN
+    networks:
+      redeTeste:
+        ipv4_address: 10.0.0.3
+    depends_on:
+      - servidor
+
+networks:
+  redeTeste:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.0.0/24
