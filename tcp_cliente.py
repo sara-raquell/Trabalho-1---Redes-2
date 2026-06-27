@@ -7,7 +7,7 @@ import csv
 MATRICULA = "20249017305"
 NOME = "Sara Raquel de Castro Moraes"
 ARQUIVO = "arquivo_teste.txt"
-CENARIO = "C"  
+CENARIO = "C"  # Trocar para A, B ou C conforme o cenário testado
 
 def get_auth_hash():
     raw = MATRICULA + NOME

@@ -1,4 +1,3 @@
-version: '3'
 services:
   servidor:
     build: .
@@ -9,6 +8,16 @@ services:
     networks:
       redeTeste:
         ipv4_address: 10.0.0.2
+
+  dns:
+    build: .
+    container_name: dns
+    command: sleep infinity
+    cap_add:
+      - NET_ADMIN
+    networks:
+      redeTeste:
+        ipv4_address: 10.0.0.4
 
   cliente:
     build: .
@@ -21,6 +30,7 @@ services:
         ipv4_address: 10.0.0.3
     depends_on:
       - servidor
+      - dns
 
 networks:
   redeTeste:

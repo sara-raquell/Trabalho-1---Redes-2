@@ -9,7 +9,7 @@ import csv
 MATRICULA = "20249017305"
 NOME = "Sara Raquel de Castro Moraes"
 ARQUIVO = "arquivo_teste.txt"
-CENARIO = "B"
+CENARIO = "B" # Trocar para A, B ou C conforme o cenário testado
 HOST = '10.0.0.2'
 PORT = 5001
 TIMEOUT = 2.0
