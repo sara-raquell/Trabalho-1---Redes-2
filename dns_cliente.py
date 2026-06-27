@@ -8,7 +8,6 @@ def resolve(nome):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.settimeout(3.0)
     
-    # Monta query: ID(2 bytes) + tamanho_nome + nome
     id_query = os.urandom(2)
     nome_bytes = nome.encode()
     query = id_query + bytes([len(nome_bytes)]) + nome_bytes
@@ -19,9 +18,8 @@ def resolve(nome):
             sock.sendto(query, (DNS_HOST, DNS_PORT))
             resposta, _ = sock.recvfrom(512)
             
-            # Extrai resposta
             tipo = resposta[2]
-            if tipo == 0x01:  # encontrado
+            if tipo == 0x01:
                 ip_bytes = resposta[-4:]
                 ip = socket.inet_ntoa(ip_bytes)
                 print(f"DNS resolveu: {nome} -> {ip}")

@@ -17,7 +17,6 @@ labels = ['100KB', '1MB', '10MB']
 cenarios = ['A', 'B', 'C']
 titulos_cen = ['Cenário A\n(0%/10ms)', 'Cenário B\n(5%/50ms)', 'Cenário C\n(10%/100ms)']
 
-# Gráfico 1 — por arquivo
 fig, axes = plt.subplots(1, 3, figsize=(16, 5))
 for i, (arq, label) in enumerate(zip(arquivos, labels)):
     sub = stats[stats['arquivo'] == arq]
@@ -54,7 +53,6 @@ plt.savefig('grafico_http_comparativo.png', dpi=150, bbox_inches='tight')
 plt.show()
 print("Salvo: grafico_http_comparativo.png")
 
-# Gráfico 2 — degradação por cenário
 fig2, axes2 = plt.subplots(1, 3, figsize=(16, 5))
 for i, (arq, label) in enumerate(zip(arquivos, labels)):
     sub = stats[stats['arquivo'] == arq]

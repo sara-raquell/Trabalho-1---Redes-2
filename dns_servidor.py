@@ -15,7 +15,6 @@ def carrega_hosts(arquivo='hosts.txt'):
     return tabela
 
 def processa_query(dados, tabela):
-    # Formato: ID(2 bytes) + tamanho_nome(1 byte) + nome + \x00
     id_query = dados[0:2]
     tamanho = dados[2]
     nome = dados[3:3+tamanho].decode()
@@ -26,7 +25,6 @@ def processa_query(dados, tabela):
         ip = tabela[nome]
         print(f"Respondendo: {nome} -> {ip}")
         ip_bytes = socket.inet_aton(ip)
-        # Resposta: ID + tipo(1=found) + tamanho_nome + nome + ip
         resposta = id_query + b'\x01' + bytes([tamanho]) + nome.encode() + ip_bytes
     else:
         print(f"Nome nao encontrado: {nome}")
